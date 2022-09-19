@@ -4,27 +4,34 @@
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registro</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-				<div class="group">
-					<label for="email" class="label">Correo electrónico</label>
-					<input id="email" type="email" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Contraseña</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> ¿Admin?</label>
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Ingresar">
-				</div>				
+				<form class="login" (ngSubmit)="f.form.valid && logIn()" #f="ngForm">
+					<div class="group">
+						<input id="email" type="email" class="input" placeholder="Correo electrónico"
+						[(ngModel)]="user.email" name="email" #name="ngModel"
+						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+						required>
+					</div>
+					<div class="group">
+						<input id="password" type="password" class="input" placeholder="Contraseña"
+						[(ngModel)]="user.password" name="password" #name="ngModel"
+						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+						required>					
+					</div>
+					<div class="group">
+						<input id="check" type="checkbox" class="check" 
+						[(ngModel)]="user.isAdmin" name="check">
+						<label for="check"><span class="icon"></span> ¿Admin?</label>
+					</div>
+					<div class="group">
+						<input type="submit" class="button" value="Ingresar">
+					</div>
+				</form>				
 			</div>
 
 			<div class="sign-up-htm">
 				<div class="group">
 					<label for="email" class="label">Correo electrónico</label>
-					<input id="email" type="text" class="input">
+					<input id="" type="text" class="input">
 				</div>
                 <div class="group">
 					<label for="name" class="label">Nombre</label>
