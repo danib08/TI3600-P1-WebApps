@@ -1,3 +1,4 @@
+<body>
 <div class="login-wrap">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio de Sesión</label>
@@ -6,13 +7,15 @@
 			<div class="sign-in-htm">
 				<form class="login" (ngSubmit)="f.form.valid && logIn()" #f="ngForm">
 					<div class="group">
-						<input id="email" type="email" class="input" placeholder="Correo electrónico"
+						<label for="email" class="label">Correo electrónico</label>
+						<input id="email" type="email" class="input"
 						[(ngModel)]="user.email" name="email" #name="ngModel"
 						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
 						required>
 					</div>
 					<div class="group">
-						<input id="password" type="password" class="input" placeholder="Contraseña"
+						<label for="password" class="label">Contraseña</label>
+						<input id="password" type="password" class="input"
 						[(ngModel)]="user.password" name="password" #name="ngModel"
 						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
 						required>					
@@ -20,7 +23,7 @@
 					<div class="group">
 						<input id="check" type="checkbox" class="check" 
 						[(ngModel)]="user.isAdmin" name="check">
-						<label for="check"><span class="icon"></span> ¿Admin?</label>
+						<label for="check" class="checklabel"><span class="icon"></span> ¿Admin?</label>
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="Ingresar">
@@ -60,3 +63,4 @@
 		</div>
 	</div>
 </div>
+</body>
