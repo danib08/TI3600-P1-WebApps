@@ -46,9 +46,15 @@ export class LogInComponent implements OnInit {
         this.validation = res;
         if (this.validation.status == "OK") {
           alert("Inicio de sesión exitoso");
-          //TODO: set cookie
-          //TODO: if/else block to check if user is admin or student
+          this.cookieSvc.set('email', this.user.email);
+
           //TODO: route to corresponding component
+          if (this.user.isAdmin) {
+
+          }
+          else {
+
+          }
         }
         else {
           alert("Inicio de sesión fallido");

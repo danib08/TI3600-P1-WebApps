@@ -1,66 +1,83 @@
 <body>
-<div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio de Sesión</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registro</label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-				<form class="login" (ngSubmit)="f.form.valid && logIn()" #f="ngForm">
+	<div class="login-wrap">
+		<div class="login-html">
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio de Sesión</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registro</label>
+			<div class="login-form">
+				<div class="sign-in-htm">
+					<form class="login" (ngSubmit)="f.form.valid && logIn()" #f="ngForm">
+						<div class="group">
+							<label for="email" class="label">Correo electrónico</label>
+							<input id="email" type="email" class="input"
+							[(ngModel)]="user.email" name="email" #name="ngModel"
+							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							required>
+						</div>
+						<div class="group">
+							<label for="password" class="label">Contraseña</label>
+							<input id="password" type="password" class="input"
+							[(ngModel)]="user.password" name="password" #name="ngModel"
+							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							required>					
+						</div>
+						<div class="group">
+							<input id="check" type="checkbox" class="check" 
+							[(ngModel)]="user.isAdmin" name="check">
+							<label for="check" class="checklabel"><span class="icon"></span> ¿Admin?</label>
+						</div>
+						<div class="group">
+							<input type="submit" class="button" value="Ingresar">
+						</div>
+					</form>				
+				</div>
+
+				<div class="sign-up-htm">
 					<div class="group">
 						<label for="email" class="label">Correo electrónico</label>
-						<input id="email" type="email" class="input"
-						[(ngModel)]="user.email" name="email" #name="ngModel"
-						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
-						required>
+						<input id="" type="text" class="input">
 					</div>
 					<div class="group">
-						<label for="password" class="label">Contraseña</label>
-						<input id="password" type="password" class="input"
-						[(ngModel)]="user.password" name="password" #name="ngModel"
-						[ngClass]="{'is-invalid':f.submitted && name.invalid}"
-						required>					
+						<label for="name" class="label">Nombre</label>
+						<input id="name" type="text" class="input">
 					</div>
 					<div class="group">
-						<input id="check" type="checkbox" class="check" 
-						[(ngModel)]="user.isAdmin" name="check">
-						<label for="check" class="checklabel"><span class="icon"></span> ¿Admin?</label>
+						<label for="lastname1" class="label">Primer apellido</label>
+						<input id="lastname1" type="text" class="input">
 					</div>
 					<div class="group">
-						<input type="submit" class="button" value="Ingresar">
+						<label for="lastname2" class="label">Segundo apellido</label>
+						<input id="lastname2" type="text" class="input">
 					</div>
-				</form>				
-			</div>
-
-			<div class="sign-up-htm">
-				<div class="group">
-					<label for="email" class="label">Correo electrónico</label>
-					<input id="" type="text" class="input">
+					<div class="group">
+						<label for="sect" class="label">Sección</label>
+						<select name="section" id="section">
+							<option value=null>No indica</option>
+							<option value="7A">7A</option>
+							<option value="7B">7B</option>
+							<option value="7C">7C</option>
+							<option value="8A">8A</option>
+							<option value="8B">8B</option>
+							<option value="8C">8C</option>
+							<option value="9A">9A</option>
+							<option value="9B">9B</option>
+							<option value="9C">9C</option>
+							<option value="10A">10A</option>
+							<option value="10B">10B</option>
+							<option value="10C">10C</option>
+							<option value="11A">11A</option>
+							<option value="11B">11B</option>
+							<option value="11C">11C</option>
+						  </select>					
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Contraseña</label>
+						<input id="pass" type="password" class="input" data-type="password">
+					</div>
+					<div class="group">
+						<input type="submit" class="button" value="Registrarse">
+					</div>				
 				</div>
-                <div class="group">
-					<label for="name" class="label">Nombre</label>
-					<input id="name" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="lastname1" class="label">Primer apellido</label>
-					<input id="lastname1" type="text" class="input">
-				</div>
-                <div class="group">
-					<label for="lastname2" class="label">Segundo apellido</label>
-					<input id="lastname2" type="text" class="input">
-				</div>
-                <div class="group">
-					<label for="section" class="label">Sección</label>
-					<input id="section" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Contraseña</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Registrarse">
-				</div>				
 			</div>
 		</div>
 	</div>
-</div>
 </body>
