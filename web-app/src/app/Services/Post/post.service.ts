@@ -23,4 +23,13 @@ export class PostService {
   logIn(user: User): Observable<any> {
     return this.http.post<User>(this.baseURL + "login", user);
   }
+
+  /**
+   * POSTS the user to the API to register it on the database
+   * @param user - the user object
+   * @returns API response
+   */
+  signUp(user: User): Observable<any> {
+    return this.http.post<User>(this.baseURL + 'signup', user);
+  }
 }

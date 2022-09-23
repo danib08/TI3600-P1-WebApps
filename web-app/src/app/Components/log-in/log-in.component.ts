@@ -66,4 +66,25 @@ export class LogInComponent implements OnInit {
     );
   }
 
+  /**
+   * Called when the button of the sign up form is clicked
+   */
+  signUp() {
+    console.log(this.user);
+    this.postSvc.signUp(this.user).subscribe(
+      res => {
+        this.validation = res;
+        if (this.validation.status == "OK") {
+          alert("Registro exitoso");
+          this.router.navigate(["**"]);
+        }
+        else {
+          alert("Registro fallido");
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }
