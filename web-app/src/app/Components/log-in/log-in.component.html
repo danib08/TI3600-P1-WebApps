@@ -5,25 +5,20 @@
 			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registro</label>
 			<div class="login-form">
 				<div class="sign-in-htm">
-					<form class="login" (ngSubmit)="f.form.valid && logIn()" #f="ngForm">
+					<form class="login" (ngSubmit)="formLogIn.form.valid && logIn(formLogIn)" #formLogIn="ngForm">
 						<div class="group">
 							<label for="email" class="label">Correo electrónico</label>
 							<input id="email" type="email" class="input"
-							[(ngModel)]="user.email" name="email" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="emailInput" name="email" #name="ngModel"
+							[ngClass]="{'is-invalid':formLogIn.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
 							<label for="password" class="label">Contraseña</label>
 							<input id="password" type="password" class="input"
-							[(ngModel)]="user.password" name="password" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="passInput" name="password" #name="ngModel"
+							[ngClass]="{'is-invalid':formLogIn.submitted && name.invalid}"
 							required>					
-						</div>
-						<div class="group">
-							<input id="check" type="checkbox" class="check" 
-							[(ngModel)]="user.isAdmin" name="check">
-							<label for="check" class="checklabel"><span class="icon"></span> ¿Admin?</label>
 						</div>
 						<div class="group">
 							<input type="submit" class="button" value="Ingresar">
@@ -32,38 +27,38 @@
 				</div>
 
 				<div class="sign-up-htm">
-					<form class="signup" (ngSubmit)="f.form.valid && signUp()" #f="ngForm">
+					<form class="signup" (ngSubmit)="formRegister.form.valid && signUp()" #formRegister="ngForm">
 						<div class="group">
 							<label for="email" class="label">Correo electrónico</label>
 							<input id="emailsign" type="email" class="input"
-							[(ngModel)]="user.email" name="email" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="newUser.email" name="email" #name="ngModel"
+							[ngClass]="{'is-invalid':formRegister.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
 							<label for="name" class="label">Nombre</label>
 							<input id="name" type="text" class="input"
-							[(ngModel)]="user.firstName" name="name" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="newUser.firstName" name="name" #name="ngModel"
+							[ngClass]="{'is-invalid':formRegister.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
 							<label for="lastname1" class="label">Primer apellido</label>
 							<input id="lastname1" type="text" class="input"
-							[(ngModel)]="user.lastName1" name="lastname1" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="newUser.lastName1" name="lastname1" #name="ngModel"
+							[ngClass]="{'is-invalid':formRegister.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
 							<label for="lastname2" class="label">Segundo apellido</label>
 							<input id="lastname2" type="text" class="input"
-							[(ngModel)]="user.lastName2" name="lastname2" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="newUser.lastName2" name="lastname2" #name="ngModel"
+							[ngClass]="{'is-invalid':formRegister.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
 							<label for="sect" class="label">Sección</label>
-							<select id="section" name="section" [(ngModel)]="user.classSection" #type = "ngModel" required>
+							<select id="section" name="section" [(ngModel)]="newUser.classSection" #type = "ngModel" required>
 								<option value=null>No indica</option>
 								<option value="7A">7A</option>
 								<option value="7B">7B</option>
@@ -85,8 +80,8 @@
 						<div class="group">
 							<label for="pass" class="label">Contraseña</label>
 							<input id="pass" type="password" class="input" data-type="password"
-							[(ngModel)]="user.password" name="pass" #name="ngModel"
-							[ngClass]="{'is-invalid':f.submitted && name.invalid}"
+							[(ngModel)]="newUser.password" name="pass" #name="ngModel"
+							[ngClass]="{'is-invalid':formRegister.submitted && name.invalid}"
 							required>
 						</div>
 						<div class="group">
