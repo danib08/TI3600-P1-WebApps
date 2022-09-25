@@ -4,7 +4,7 @@ import { GetService } from 'src/app/Services/Get/get.service';
 import { PostService } from 'src/app/Services/Post/post.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { FormGroupName, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -53,7 +53,8 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * Called when the log in form is submitted
+   * Called when the log in form is submitted 
+   * @param form - form reference from the html
    */
   logIn(form: NgForm) {
     this.getSvc.logIn(this.emailInput, this.passInput)
@@ -67,7 +68,7 @@ export class LogInComponent implements OnInit {
 
           }
           else {
-
+            this.router.navigate(["register-club"]);
           }
         }
       })
@@ -75,7 +76,8 @@ export class LogInComponent implements OnInit {
   }
 
   /**
-   * Called when the sign up form is submitted
+   * Called when the registration form is submitted 
+   * @param form - form reference from the html
    */
   signUp(form: NgForm) {
     this.postSvc.signUp(this.newUser)
