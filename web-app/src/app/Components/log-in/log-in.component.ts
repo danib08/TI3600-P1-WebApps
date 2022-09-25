@@ -53,7 +53,8 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * Called when the log in form is submitted
+   * Called when the log in form is submitted 
+   * @param form - form reference from the html
    */
   logIn(form: NgForm) {
     this.getSvc.logIn(this.emailInput, this.passInput)
@@ -75,7 +76,8 @@ export class LogInComponent implements OnInit {
   }
 
   /**
-   * Called when the sign up form is submitted
+   * Called when the registration form is submitted 
+   * @param form - form reference from the html
    */
   signUp(form: NgForm) {
     this.postSvc.signUp(this.newUser)

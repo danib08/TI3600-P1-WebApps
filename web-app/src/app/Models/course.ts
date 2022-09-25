@@ -5,5 +5,10 @@
     name: string,
     category: string,
     interestedStudents: number,
-    proposedBy: string,
+    proposedBy: {
+        firstName: string,
+        lastName1: string,
+        lastName2: string,
+        email: string
+    },
 }

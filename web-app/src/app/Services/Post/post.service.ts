@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/Models/user';
+import { Course } from 'src/app/Models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +43,15 @@ export class PostService {
     return this.http.post<User>(this.baseURL + "users", user, { observe: 'response'})
       .pipe(catchError(this.handleError));
   }
+
+  /**
+   * POSTS the course suggestion to the API to register it on the database
+   * @param course - the course object
+   * @returns API response
+   */
+  postCourse(course: Course): Observable<HttpResponse<Course>> {
+    return this.http.post<Course>(this.baseURL + "courses", course, { observe: 'response'})
+      .pipe(catchError(this.handleError));
+  }
+
 }

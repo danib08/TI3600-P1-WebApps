@@ -46,4 +46,18 @@ export class GetService {
           catchError(this.handleError)
       );
   }
+
+  //TODO: verify GET one user is working correctly
+  /**
+   * GET user information based on email
+   * @param email - email of the desired user
+   * @returns API response
+   */
+  getUser(email: string): Observable<HttpResponse<User>> {
+    return this.http.get<User>(
+      this.baseURL + "users/" + email, { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
 }
