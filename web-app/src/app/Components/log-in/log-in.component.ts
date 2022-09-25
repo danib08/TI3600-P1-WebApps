@@ -4,7 +4,7 @@ import { GetService } from 'src/app/Services/Get/get.service';
 import { PostService } from 'src/app/Services/Post/post.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { FormGroupName, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -67,7 +67,7 @@ export class LogInComponent implements OnInit {
 
           }
           else {
-
+            this.router.navigate(["register-club"]);
           }
         }
       })
