@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './Components/log-in/log-in.component';
 import { StudentNavbarComponent } from './Components/student-navbar/student-navbar.component';
 import { RegisterClubComponent } from './Components/register-club/register-club.component';
+import { MyClubsComponent } from './Components/my-clubs/my-clubs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     StudentNavbarComponent,
-    RegisterClubComponent
+    RegisterClubComponent,
+    MyClubsComponent
   ],
   imports: [
     BrowserModule,
