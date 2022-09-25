@@ -30,7 +30,7 @@ export class AllClubsComponent implements OnInit {
     private cookieSvc: CookieService) { }
 
   ngOnInit(): void {
-    //this.getCourses();
+    //this.getCourses(); //TODO: uncomment and test
 
   }
 
