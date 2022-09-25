@@ -53,7 +53,7 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * Called when the button of the log in form is clicked
+   * Called when the log in form is submitted
    */
   logIn(form: NgForm) {
     this.getSvc.logIn(this.emailInput, this.passInput)
@@ -75,24 +75,16 @@ export class LogInComponent implements OnInit {
   }
 
   /**
-   * Called when the button of the sign up form is clicked
+   * Called when the sign up form is submitted
    */
-  signUp() {
-    /**console.log(this.user);
-    this.postSvc.signUp(this.user).subscribe(
-      res => {
-        this.validation = res;
-        if (this.validation.status == "OK") {
-          alert("Registro exitoso");
-          this.router.navigate(["**"]);
+  signUp(form: NgForm) {
+    this.postSvc.signUp(this.newUser)
+      .subscribe(resp => {
+        if (resp.status == 200) {
+          alert("Registro exitoso");         
+          this.router.navigate(["login"]);
         }
-        else {
-          alert("Registro fallido");
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );*/
+      })
+      form.resetForm();
   }
 }

@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="sign-up-htm">
-					<form class="signup" (ngSubmit)="formRegister.form.valid && signUp()" #formRegister="ngForm">
+					<form class="signup" (ngSubmit)="formRegister.form.valid && signUp(formRegister)" #formRegister="ngForm">
 						<div class="group">
 							<label for="email" class="label">Correo electrónico</label>
 							<input id="emailsign" type="email" class="input"

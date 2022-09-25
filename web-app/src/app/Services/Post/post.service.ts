@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/Models/user';
 
 @Injectable({
@@ -11,17 +11,26 @@ import { User } from 'src/app/Models/user';
  * Service for the POST requests to the API
  */
 export class PostService {
-  private baseURL = "https://bases.free.beeceptor.com/"
+  private baseURL = "http://localhost:3000/api/"
 
   constructor(private http: HttpClient) { }
 
   /**
-   * POSTS the user to the API to verify its login
-   * @param user - the user object
-   * @returns API response
-   */
-  logIn(user: User): Observable<any> {
-    return this.http.post<User>(this.baseURL + "login", user);
+     * Handles errors thrown by the backend API
+     * @param error - an HttpErrorRespose object
+     * @returns an ErrorObservable with an user-friendly message
+     */
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
   /**
@@ -29,7 +38,8 @@ export class PostService {
    * @param user - the user object
    * @returns API response
    */
-  signUp(user: User): Observable<any> {
-    return this.http.post<User>(this.baseURL + 'signup', user);
+  signUp(user: User): Observable<HttpResponse<User>> {
+    return this.http.post<User>(this.baseURL + "users", user, { observe: 'response'})
+      .pipe(catchError(this.handleError));
   }
 }
