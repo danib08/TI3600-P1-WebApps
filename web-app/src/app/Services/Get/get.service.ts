@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/Models/user';
+import { Course } from 'src/app/Models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,19 @@ export class GetService {
   getUser(email: string): Observable<HttpResponse<User>> {
     return this.http.get<User>(
       this.baseURL + "users/" + email, { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  //TODO: verify GET all courses is working correctly
+  /**
+   * GET all suggested courses on the database
+   * @returns API response
+   */
+  getCourses(): Observable<HttpResponse<Course[]>> {
+    return this.http.get<Course[]>(
+      this.baseURL + "courses", { observe: 'response' })
         .pipe(
           catchError(this.handleError)
       );
