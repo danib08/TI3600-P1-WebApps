@@ -41,7 +41,7 @@ export class GetService {
    */
   logIn(email: string, pass: string): Observable<HttpResponse<User>> {
     return this.http.get<User>(
-      this.baseURL + "users/" + email + "?password=" + pass, { observe: 'response' })
+      this.baseURL + "users/" + email, { params: {password: pass}, observe: 'response' })
         .pipe(
           catchError(this.handleError)
       );
