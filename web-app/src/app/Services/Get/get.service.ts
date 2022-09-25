@@ -8,18 +8,18 @@ import { User } from 'src/app/Models/user';
 })
 
 /**
- * Service for the POST requests to the API
+ * Service for the GET requests to the API
  */
-export class PostService {
+export class GetService {
   private baseURL = "http://localhost:3000/api/"
 
   constructor(private http: HttpClient) { }
 
   /**
-     * Handles errors thrown by the backend API
-     * @param error - an HttpErrorRespose object
-     * @returns an ErrorObservable with an user-friendly message
-     */
+   * Handles errors thrown by the backend API
+   * @param error - an HttpErrorRespose object
+   * @returns an ErrorObservable with an user-friendly message
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred.
@@ -34,12 +34,16 @@ export class PostService {
   }
 
   /**
-   * POSTS the user to the API to register it on the database
-   * @param user - the user object
+   * GET request to authenticate users by email and password  
+   * @param email - the user input email 
+   * @param pass - the user input password
    * @returns API response
    */
-  signUp(user: User): Observable<HttpResponse<User>> {
-    return this.http.post<User>(this.baseURL + "users", user, { observe: 'response'})
-      .pipe(catchError(this.handleError));
+  logIn(email: string, pass: string): Observable<HttpResponse<User>> {
+    return this.http.get<User>(
+      this.baseURL + "users/" + email, { params: {password: pass}, observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
   }
 }

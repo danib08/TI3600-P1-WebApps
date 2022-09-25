@@ -11,5 +11,6 @@ export interface User {
     email: string,
     password: string,
     classSection: string,
-    proposedCourses: Course[]
+    proposedCourses: Course[],
+    wantedCourses: Course[]
 }

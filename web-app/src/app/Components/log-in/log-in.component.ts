@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/user';
+import { GetService } from 'src/app/Services/Get/get.service';
 import { PostService } from 'src/app/Services/Post/post.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { FormGroupName, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -16,7 +18,10 @@ import { CookieService } from 'ngx-cookie-service';
  */
 export class LogInComponent implements OnInit {
 
-  user: User = {
+  emailInput: string = '';
+  passInput: string = '';
+
+  private loggedUser: User = {
     firstName: '',
     lastName1: '',
     lastName2: '',
@@ -24,67 +29,62 @@ export class LogInComponent implements OnInit {
     email: '',
     password: '',
     classSection: '',
-    proposedCourses: []
+    proposedCourses: [],
+    wantedCourses: []
   }
 
-  validation = {
-    status: ''
+  newUser: User = {
+    firstName: '',
+    lastName1: '',
+    lastName2: '',
+    isAdmin: false,
+    email: '',
+    password: '',
+    classSection: '',
+    proposedCourses: [],
+    wantedCourses: []
   }
 
   constructor(private router: Router, 
     private cookieSvc: CookieService, 
+    private getSvc: GetService,
     private postSvc: PostService) { }
 
   ngOnInit(): void { }
 
   /**
-   * Called when the button of the log in form is clicked
+   * Called when the log in form is submitted
    */
-  logIn() {
-    this.postSvc.logIn(this.user).subscribe(
-      res => {
-        this.validation = res;
-        if (this.validation.status == "OK") {
-          alert("Inicio de sesión exitoso");
-          this.cookieSvc.set('email', this.user.email);
-
+  logIn(form: NgForm) {
+    this.getSvc.logIn(this.emailInput, this.passInput)
+      .subscribe(resp => {
+        if (resp.status == 200) {
+          this.loggedUser = { ...resp.body! };
+          this.cookieSvc.set('email', this.loggedUser.email);
+          
           //TODO: route to corresponding component
-          if (this.user.isAdmin) {
+          if (this.loggedUser.isAdmin) {
 
           }
           else {
 
           }
         }
-        else {
-          alert("Inicio de sesión fallido");
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      })
+      form.resetForm();
   }
 
   /**
-   * Called when the button of the sign up form is clicked
+   * Called when the sign up form is submitted
    */
-  signUp() {
-    console.log(this.user);
-    this.postSvc.signUp(this.user).subscribe(
-      res => {
-        this.validation = res;
-        if (this.validation.status == "OK") {
-          alert("Registro exitoso");
-          this.router.navigate(["**"]);
+  signUp(form: NgForm) {
+    this.postSvc.signUp(this.newUser)
+      .subscribe(resp => {
+        if (resp.status == 200) {
+          alert("Registro exitoso");         
+          this.router.navigate(["login"]);
         }
-        else {
-          alert("Registro fallido");
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      })
+      form.resetForm();
   }
 }
