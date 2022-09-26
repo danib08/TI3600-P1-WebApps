@@ -12,7 +12,7 @@ import { Course } from 'src/app/Models/course';
  * Service for the GET requests to the API
  */
 export class GetService {
-  private baseURL = "http://localhost:3000/api/"
+  private baseURL = "https://sleepy-beach-86002.herokuapp.com/api/"
 
   constructor(private http: HttpClient) { }
 
@@ -48,7 +48,6 @@ export class GetService {
       );
   }
 
-  //TODO: verify GET one user is working correctly
   /**
    * GET user information based on email
    * @param email - email of the desired user
@@ -61,8 +60,7 @@ export class GetService {
           catchError(this.handleError)
       );
   }
-
-  //TODO: verify GET all courses is working correctly
+  
   /**
    * GET all suggested courses on the database
    * @returns API response
