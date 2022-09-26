@@ -11,13 +11,16 @@ import { GetService } from 'src/app/Services/Get/get.service';
 export class AllClubsComponent implements OnInit {
 
   allCourses: Course[] = [];
+  list: Course[] = [];
  
   constructor(private getSvc: GetService,
     private cookieSvc: CookieService) { }
 
   ngOnInit(): void {
-    this.getCourses(); //TODO: uncomment and test
+    this.getCourses();
   }
+
+  //TODO: check if proposedBy is being sent and displayed
 
   /**
    * Gets a list of all of the registered courses
@@ -26,10 +29,20 @@ export class AllClubsComponent implements OnInit {
     this.getSvc.getCourses()
       .subscribe(resp => {
         if (resp.status == 200) {
-          this.allCourses = { ...resp.body! };
-          console.log(this.allCourses);
+          this.list = { ...resp.body! };
+          this.setCourses();
         }
       })
+  }
+
+  /**
+   * Sets list of all courses by looping through the
+   * API response object
+   */
+  setCourses() {
+    for (let i = 0; i < Object.keys(this.list).length; i++) {
+      this.allCourses.push(this.list[i])
+    }
   }
 
   subscribe(courseName: string,  $event: MouseEvent){

@@ -60,7 +60,8 @@ export class GetService {
           catchError(this.handleError)
       );
   }
-
+  
+  //TODO: verify GET all courses is working correctly
   /**
    * GET all suggested courses on the database
    * @returns API response
