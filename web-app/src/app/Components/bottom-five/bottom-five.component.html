@@ -1,0 +1,22 @@
+<header>
+    <app-admin-navbar></app-admin-navbar>
+</header>
+
+<body>
+    <div class="main-div">
+        <div class="container"  id="htmlData" #content>
+            <ul class="responsive-table">
+              <li class="table-header">
+                <div class="col col-1">Nombre del club</div>
+                <div class="col col-2">Categoría</div>
+                <div class="col col-3">Cantidad de veces sugerido</div>
+              </li>
+              <li class="table-row" *ngFor="let course of courses">
+                <div class="col col-1" data-label="name">{{course.name}}</div>
+                <div class="col col-2" data-label="category">{{course.category}}</div>
+                <div class="col col-3" data-label="interested">{{course.interestedStudents}}</div>
+              </li>
+            </ul>
+        </div>
+    </div>
+</body>

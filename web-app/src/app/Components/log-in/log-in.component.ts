@@ -63,9 +63,9 @@ export class LogInComponent implements OnInit {
           this.loggedUser = { ...resp.body! };
           this.cookieSvc.set('email', this.loggedUser.email);
           
-          //TODO: route to corresponding component
+          console.log(this.loggedUser)
           if (this.loggedUser.isAdmin) {
-
+            this.router.navigate(["categories"]);
           }
           else {
             this.router.navigate(["register-club"]);
