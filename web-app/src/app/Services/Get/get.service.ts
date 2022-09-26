@@ -72,4 +72,16 @@ export class GetService {
           catchError(this.handleError)
       );
   }
+
+  /**
+   * GET top five most subscribed courses
+   * @returns API response
+   */
+  getTopFiveCourses(): Observable<HttpResponse<Course[]>> {
+    return this.http.get<Course[]>(
+      this.baseURL + "courses", { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
 }

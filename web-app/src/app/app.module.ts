@@ -10,6 +10,11 @@ import { StudentNavbarComponent } from './Components/student-navbar/student-navb
 import { RegisterClubComponent } from './Components/register-club/register-club.component';
 import { MyClubsComponent } from './Components/my-clubs/my-clubs.component';
 import { AllClubsComponent } from './Components/all-clubs/all-clubs.component';
+import { AdminNavbarComponent } from './Components/admin-navbar/admin-navbar.component';
+import { TopThreeComponent } from './Components/top-three/top-three.component';
+import { TopFiveComponent } from './Components/top-five/top-five.component';
+import { BottomFiveComponent } from './Components/bottom-five/bottom-five.component';
+import { CategoriesComponent } from './Components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { AllClubsComponent } from './Components/all-clubs/all-clubs.component';
     StudentNavbarComponent,
     RegisterClubComponent,
     MyClubsComponent,
-    AllClubsComponent
+    AllClubsComponent,
+    AdminNavbarComponent,
+    TopThreeComponent,
+    TopFiveComponent,
+    BottomFiveComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
