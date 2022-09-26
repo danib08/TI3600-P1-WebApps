@@ -1,0 +1,21 @@
+.navbar-brand {
+    letter-spacing: 2px;
+    color: #c24244;
+    font:600 16px/18px 'Open Sans', sans-serif;
+    font-size: 25px;
+}
+  
+.navbar-brand:hover {
+      color: #f07167;
+}
+  
+.navbar-scroll .nav-link,
+  .navbar-scroll .fa-bars {
+    color: #006F90;
+    font:600 16px/18px 'Open Sans', sans-serif; 
+    font-size: 18px;
+}  
+
+.navbar .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #00DBE6;
+}

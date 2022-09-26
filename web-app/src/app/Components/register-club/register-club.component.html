@@ -1,0 +1,38 @@
+<body>
+    <header>
+        <app-student-navbar></app-student-navbar>
+    </header>
+
+    <div class="main-div">
+        <div class="login-box">
+            <h2>Registrar Club</h2>
+            <form class="reg-club" (ngSubmit)="clubForm.form.valid && submitCourse(clubForm)" #clubForm="ngForm">
+            <div class="user-box">
+                <input type="text" name="courseName"
+                [(ngModel)]="newCourse.name" #name="ngModel"
+				[ngClass]="{'is-invalid':clubForm.submitted && name.invalid}"
+				required>
+                <label>Nombre del club</label>
+              </div>
+              
+              <div class="group">
+                <label class="cat-label">Categoría</label>
+                <br>
+                <select id="category" name="category"
+                [(ngModel)]="newCourse.category" #type="ngModel" required>
+                    <option value="Arte">Arte</option>
+                    <option value="Deporte">Deporte</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Economía">Economía</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Idiomas">Idiomas</option>
+                </select>					
+            </div>
+
+            <div class="group">
+                <input type="submit" class="button" value="Enviar">
+            </div>	
+            </form>
+          </div>
+    </div>
+</body>
