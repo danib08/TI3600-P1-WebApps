@@ -48,24 +48,30 @@ export class RegisterClubComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //TODO: verify club registration is working correctly
   /**
    * Called when the course registration form is submitted 
-   * @param form - form reference from the html
+   * @param form - form reference from the html file
    */
   submitCourse(form: NgForm) {
     this.getSvc.getUser(this.cookieSvc.get('email'))
       .subscribe(resp => {
         if (resp.status == 200) {
           this.loggedUser = { ...resp.body! };
-          this.newCourse.proposedBy.email = this.loggedUser.email;
-          this.newCourse.proposedBy.firstName = this.loggedUser.firstName;
-          this.newCourse.proposedBy.lastName1 = this.loggedUser.lastName1;
-          this.newCourse.proposedBy.lastName2 = this.loggedUser.lastName2;
+          this.postCourse(this.loggedUser, form); 
         }
       })
+  }
 
-    console.log(this.newCourse); //TODO: remove when done
+  /**
+   * Posts the new course to the API
+   * @param user - the logged user
+   * @param form - form from the html file
+   */
+  postCourse(user: User, form: NgForm) {
+    this.newCourse.proposedBy.email = user.email;
+    this.newCourse.proposedBy.firstName = user.firstName;
+    this.newCourse.proposedBy.lastName1 = user.lastName1;
+    this.newCourse.proposedBy.lastName2 = user.lastName2;
 
     this.postSvc.postCourse(this.newCourse)
       .subscribe(resp => {

@@ -36,7 +36,6 @@ export class MyClubsComponent implements OnInit {
     this.retrieveInfo();
   }
 
-  //TODO: verify GET for courses is working
   /**
    * Gets list of courses submitted by the student 
    */

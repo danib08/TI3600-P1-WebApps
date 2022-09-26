@@ -12,7 +12,7 @@ import { Course } from 'src/app/Models/course';
  * Service for the POST requests to the API
  */
 export class PostService {
-  private baseURL = "http://localhost:3000/api/"
+  private baseURL = "https://sleepy-beach-86002.herokuapp.com/api/"
 
   constructor(private http: HttpClient) { }
 
@@ -53,5 +53,4 @@ export class PostService {
     return this.http.post<Course>(this.baseURL + "courses", course, { observe: 'response'})
       .pipe(catchError(this.handleError));
   }
-
 }

@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
  * Service for the PATCH requests to the API
  */
 export class PatchService {
-  private baseURL = "http://localhost:3000/api/"
+  private baseURL = "https://sleepy-beach-86002.herokuapp.com/api/"
 
   constructor(private http: HttpClient) { }
 
@@ -33,4 +33,5 @@ export class PatchService {
   }
 
    //TODO: add patch method
+
 }

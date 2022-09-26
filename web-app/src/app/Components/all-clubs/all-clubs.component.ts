@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Models/user';
 import { Course } from 'src/app/Models/course';
 import { CookieService } from 'ngx-cookie-service';
 import { GetService } from 'src/app/Services/Get/get.service';
@@ -11,27 +10,13 @@ import { GetService } from 'src/app/Services/Get/get.service';
 })
 export class AllClubsComponent implements OnInit {
 
-  allCourses: Course[] = [
-    {"name": "Patinaje", "category": "Deportes", "interestedStudents": 1, proposedBy: {
-      firstName: "Daniela",
-      lastName1: "Brenes",
-      lastName2: "Otarola",
-      email: "dan@gmail.com"
-    }},
-    {"name": "Esgrima", "category": "Deportes", "interestedStudents": 1, proposedBy: {
-      firstName: "Daniela",
-      lastName1: "Brenes",
-      lastName2: "Otarola",
-      email: "dan@gmail.com"
-    }}
-  ];
-
+  allCourses: Course[] = [];
+ 
   constructor(private getSvc: GetService,
     private cookieSvc: CookieService) { }
 
   ngOnInit(): void {
-    //this.getCourses(); //TODO: uncomment and test
-
+    this.getCourses(); //TODO: uncomment and test
   }
 
   /**
@@ -42,6 +27,7 @@ export class AllClubsComponent implements OnInit {
       .subscribe(resp => {
         if (resp.status == 200) {
           this.allCourses = { ...resp.body! };
+          console.log(this.allCourses);
         }
       })
   }
