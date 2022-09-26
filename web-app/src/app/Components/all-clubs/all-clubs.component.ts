@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/course';
 import { CookieService } from 'ngx-cookie-service';
 import { GetService } from 'src/app/Services/Get/get.service';
+import { PatchService } from 'src/app/Services/Patch/patch.service';
 
 @Component({
   selector: 'app-all-clubs',
@@ -14,6 +15,7 @@ export class AllClubsComponent implements OnInit {
   list: Course[] = [];
  
   constructor(private getSvc: GetService,
+    private patchSvc: PatchService,
     private cookieSvc: CookieService) { }
 
   ngOnInit(): void {
@@ -45,9 +47,20 @@ export class AllClubsComponent implements OnInit {
     }
   }
 
+  /**
+   * Subscribes the user to a specific course
+   * @param courseName - name of the course
+   * @param $event - mouse click
+   */
   subscribe(courseName: string,  $event: MouseEvent){
     ($event.target as HTMLButtonElement).disabled = true;
+    let email = this.cookieSvc.get('email');
 
-    //TODO: call patch method to subscribe to course
+    this.patchSvc.subscribeToCourse(courseName, email)
+      .subscribe(resp => {
+        if (resp.status == 200) {
+          alert("Interés dado satisfactoriamente.");
+        }
+      })
   }
 }

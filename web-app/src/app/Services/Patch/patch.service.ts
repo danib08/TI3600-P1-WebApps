@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Course } from 'src/app/Models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,18 @@ export class PatchService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-   //TODO: add patch method
-
+   //TODO: decirle a luis pedro que ta malo xd
+   /**
+    * PATCH method to subscribe an user to a course
+    * @param course - name of the course
+    * @param emailUser - email of the user
+    * @returns 
+    */
+   subscribeToCourse(course: string, emailUser: string): Observable<HttpResponse<any>> {
+    return this.http.patch<any>(
+      this.baseURL + "courses/" + course + "?action=subscribe&email=" + emailUser, { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
 }

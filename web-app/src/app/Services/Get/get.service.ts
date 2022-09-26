@@ -61,7 +61,6 @@ export class GetService {
       );
   }
   
-  //TODO: verify GET all courses is working correctly
   /**
    * GET all suggested courses on the database
    * @returns API response
