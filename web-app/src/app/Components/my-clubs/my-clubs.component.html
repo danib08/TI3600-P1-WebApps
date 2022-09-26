@@ -9,12 +9,10 @@
               <li class="table-header">
                 <div class="col col-1">Nombre del club</div>
                 <div class="col col-2">Categoría</div>
-                <div class="col col-3">Estudiantes Interesados</div>
               </li>
               <li class="table-row" *ngFor="let course of myCourses">
                 <div class="col col-1" data-label="name">{{course.name}}</div>
                 <div class="col col-2" data-label="category">{{course.category}}</div>
-                <div class="col col-3" data-label="interested">{{course.interestedStudents}}</div>
               </li>
             </ul>
         </div>
