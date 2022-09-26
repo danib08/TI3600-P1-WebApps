@@ -33,7 +33,6 @@ export class PatchService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-   //TODO: decirle a luis pedro que ta malo xd
    /**
     * PATCH method to subscribe an user to a course
     * @param course - name of the course
