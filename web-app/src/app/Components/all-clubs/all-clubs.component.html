@@ -15,6 +15,8 @@
                         <span class="col-3"><br>
                                 <i class="material-icons">article</i>{{course.name}} <br>
                                 <i class="material-icons">emoji_events</i>{{course.category}}<br>
+                                <i class="material-icons">article</i>{{course.proposedBy.firstName + " "
+                                 + course.proposedBy.lastName1}} <br>
                         </span>
                         <span class="right"><button class="btn" (click)="subscribe(course.name, $event)" style="float: right;">Me interesa</button></span>
                     </div>

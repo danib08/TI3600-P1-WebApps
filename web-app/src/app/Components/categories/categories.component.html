@@ -1,3 +1,20 @@
 <header>
     <app-admin-navbar></app-admin-navbar>
 </header>
+
+<body>
+    <div class="main-div">
+        <div class="container"  id="htmlData" #content>
+            <ul class="responsive-table">
+              <li class="table-header">
+                <div class="col col-1">Categoría</div>
+                <div class="col col-2">Cantidad de clubes</div>
+              </li>
+              <li class="table-row" *ngFor="let item of categories">
+                <div class="col col-1" data-label="name">{{item._id.category}}</div>
+                <div class="col col-2" data-label="category">{{item.count}}</div>
+              </li>
+            </ul>
+        </div>
+    </div>
+</body>

@@ -22,8 +22,6 @@ export class AllClubsComponent implements OnInit {
     this.getCourses();
   }
 
-  //TODO: check if proposedBy is being sent and displayed
-
   /**
    * Gets a list of all of the registered courses
    */

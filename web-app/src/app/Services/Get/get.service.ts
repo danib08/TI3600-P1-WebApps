@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/Models/user';
 import { Course } from 'src/app/Models/course';
+import { Category } from 'src/app/Models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -79,7 +80,31 @@ export class GetService {
    */
   getTopFiveCourses(): Observable<HttpResponse<Course[]>> {
     return this.http.get<Course[]>(
-      this.baseURL + "courses", { observe: 'response' })
+      this.baseURL + "report/topCourses", { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * GET bottom five least subscribed courses
+   * @returns API response
+   */
+    getBottomFiveCourses(): Observable<HttpResponse<Course[]>> {
+      return this.http.get<Course[]>(
+        this.baseURL + "report/bottomCourses", { observe: 'response' })
+          .pipe(
+            catchError(this.handleError)
+        );
+    }
+    
+  /**
+   * GET number of courses suggested by category
+   * @returns API response
+   */
+   getCategoriesStats(): Observable<HttpResponse<Category[]>> {
+    return this.http.get<Category[]>(
+      this.baseURL + "report/byCategory", { observe: 'response' })
         .pipe(
           catchError(this.handleError)
       );
