@@ -4,6 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { User } from 'src/app/Models/user';
 import { Course } from 'src/app/Models/course';
 import { Category } from 'src/app/Models/category';
+import { TopThree } from 'src/app/Models/top-three';
 
 @Injectable({
   providedIn: 'root'
@@ -105,6 +106,18 @@ export class GetService {
    getCategoriesStats(): Observable<HttpResponse<Category[]>> {
     return this.http.get<Category[]>(
       this.baseURL + "report/byCategory", { observe: 'response' })
+        .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * GET information of the top three suggester students
+   * @returns API response
+   */
+  getTopThree(): Observable<HttpResponse<TopThree[]>> {
+    return this.http.get<TopThree[]>(
+      this.baseURL + "report/topSuggesters", { observe: 'response' })
         .pipe(
           catchError(this.handleError)
       );
